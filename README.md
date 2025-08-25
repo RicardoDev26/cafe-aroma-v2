@@ -41,4 +41,4 @@ Esto levantará tanto el backend como el frontend y permitirá acceder a las int
 - Swagger / API Documentation: http://localhost:8080/api
 
 # IMPORTANTE
-# LOS .env SE AGREGARON SOLAMENTE POR LA PRUEBA TECNICA
+# El .env SE AGREGARON SOLAMENTE POR LA PRUEBA TECNICA
