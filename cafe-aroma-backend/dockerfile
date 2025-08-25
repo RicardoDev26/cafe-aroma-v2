@@ -28,11 +28,14 @@ RUN echo "<Directory /var/www/html/public>\n\
 
 WORKDIR /var/www/html
 
-# Copiar el código
-COPY . .
+# Copiar composer.json y composer.lock primero para aprovechar cache
+COPY composer.json composer.lock ./
 
 # Instalar dependencias PHP
 RUN composer install --no-scripts --no-interaction --prefer-dist --optimize-autoloader
+
+# Copiar el resto del código
+COPY . .
 
 # Exponer el puerto de Apache
 EXPOSE 80
