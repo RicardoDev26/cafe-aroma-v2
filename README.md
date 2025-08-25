@@ -42,3 +42,6 @@ Esto levantará tanto el backend como el frontend y permitirá acceder a las int
 
 # IMPORTANTE
 # El .env SE AGREGO SOLAMENTE POR LA PRUEBA TECNICA
+
+# Video de como funciona la pagina
+https://www.loom.com/share/18044e6b25c0427585c5adf43d7536e4?sid=a5e57ba5-2d23-48df-bfdd-39075622cdf5
