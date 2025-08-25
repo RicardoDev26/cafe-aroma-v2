@@ -1,0 +1,121 @@
+<div class="min-h-screen bg-background py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h1 class="text-foreground mb-4 text-4xl md:text-5xl">Contáctanos</h1>
+        <p class="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          Estamos aquí para ayudarte. ¿Tienes preguntas, sugerencias o quieres hacer una reserva? 
+          No dudes en ponerte en contacto con nosotros. ¡Nos encantaría escucharte!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <div>
+          <div class="mb-8">
+            <h2 class="text-foreground mb-3">Envíanos un Mensaje</h2>
+            <p class="text-muted-foreground leading-relaxed">
+              Completa el formulario y te responderemos lo antes posible. Tu opinión es muy importante para nosotros.
+            </p>
+          </div>
+          <app-contact-form />
+        </div>
+
+        <div class="space-y-8">
+            <section class="bg-card rounded-lg shadow-sm border border-border p-6">
+                <h3 class="text-foreground mb-4">Información de Contacto</h3>
+                <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                    <span class="text-primary text-xl mt-1">📍</span>
+                    <div>
+                    <h4 class="text-foreground">Dirección</h4>
+                    <p class="text-muted-foreground">Calle Principal 123, Centro Histórico<br/>Ciudad, Estado 12345</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <span class="text-primary text-xl mt-1">📞</span>
+                    <div>
+                    <h4 class="text-foreground">Teléfono</h4>
+                    <p class="text-muted-foreground">+1 (555) 123-4567<br/>WhatsApp: +1 (555) 987-6543</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <span class="text-primary text-xl mt-1">✉️</span>
+                    <div>
+                    <h4 class="text-foreground">Email</h4>
+                    <p class="text-muted-foreground">info&#64;cafearoma.com<br/>reservas&#64;cafearoma.com</p>  
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="bg-card rounded-lg shadow-sm border border-border p-6">
+                <h3 class="text-foreground mb-4">Horarios de Atención</h3>
+                <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="text-foreground">Lunes - Viernes</span>
+                    <span class="text-muted-foreground">7:00 AM - 9:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-foreground">Sábados</span>
+                    <span class="text-muted-foreground">8:00 AM - 10:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-foreground">Domingos</span>
+                    <span class="text-muted-foreground">8:00 AM - 8:00 PM</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-border">
+                    <p class="text-muted-foreground text-sm">
+                    <span class="text-primary">💡</span> Los fines de semana recomendamos hacer reserva previa
+                    </p>
+                </div>
+                </div>
+            </section>
+
+            <section class="bg-card rounded-lg shadow-sm border border-border p-6">
+                <h3 class="text-foreground mb-4">Información Adicional</h3>
+                <div class="space-y-3 text-muted-foreground">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-primary">🚗</span>
+                        <p>Estacionamiento disponible en la calle</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-primary">🚌</span>
+                        <p>Transporte público: Líneas 15, 23 y 47 - Parada &quot;Centro&quot;</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-primary">🚶</span>
+                        <p>A 5 minutos caminando desde la plaza principal</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-primary">♿</span>
+                        <p>Acceso para personas con movilidad reducida</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+      </div>
+
+      <div class="text-center mt-16 bg-gradient-to-r from-primary/10 to-accent/20 rounded-2xl p-8">
+        <h3 class="text-foreground mb-4">¡Te esperamos en Café Aroma!</h3>
+        <p class="text-muted-foreground mb-6 leading-relaxed">
+          Ven a vivir la experiencia completa. Nuestro equipo está listo para atenderte con la mejor sonrisa y el café más delicioso de la ciudad.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <app-button-principal
+            title="Volver al Inicio"
+            (clickEvent)="goTo('/')"
+            class="bg-primary rounded-lg text-primary-foreground hover:bg-primary/90"
+          />
+          <app-button-principal
+            title="Ver Catálogo"
+            (clickEvent)="goTo('/catalog')"
+            class="border-primary text-primary hover:bg-primary/5"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>

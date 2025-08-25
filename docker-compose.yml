@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: cafe_postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro
+
+  backend:
+    build:
+      context: ./cafe-aroma-backend
+      dockerfile: Dockerfile
+    container_name: cafe_aroma_backend
+    restart: always
+    volumes:
+      - ./cafe-aroma-backend:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "8080:8000"
+    command: >
+      sh -c "
+        sleep 5 &&
+        php bin/console doctrine:migrations:migrate --no-interaction &&
+        php -S 0.0.0.0:8000 -t public
+      "
+
+  frontend:
+    build:
+      context: ./cafe-aromaAngular
+      dockerfile: Dockerfile
+    container_name: cafe_aroma_app
+    restart: always
+    volumes:
+      - ./cafe-aromaAngular:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - "4200:4200"
+    command: ng serve --host 0.0.0.0 --port 4200
+    depends_on:
+      - backend
+    env_file:
+      - .env
+
+volumes:
+  db_data:

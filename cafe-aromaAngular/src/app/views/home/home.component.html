@@ -1,0 +1,90 @@
+<div class="min-h-screen bg-[#FAF7F0]">
+  <section class="relative bg-gradient-to-br from-[#6F4E37]/10 to-[#DAB49D]/20 py-24 md:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-[#2C2C2C] mb-6 text-4xl md:text-6xl">
+          Bienvenido a Café Aroma
+        </h1>
+        <p class="text-[#717182] text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+          Descubre sabores únicos en cada taza. Café artesanal, productos frescos y el mejor
+          ambiente para disfrutar momentos especiales. Desde 1995, creando experiencias
+          inolvidables una taza a la vez.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <app-button-principal
+            title="Ver Catálogo"
+            (clickEvent)="goTo('/catalog')"
+            class="bg-[#6F4E37] rounded-lg overflow-hidden text-white hover:bg-[#6F4E37]/90 "
+          />
+          <app-button-principal
+            title="Ver Promociones"
+            (clickEvent)="goTo('/promotions')"
+            class="overflow-hidden bg-[#DAB49D] rounded-lg  text-[#2C2C2C] hover:bg-[#DAB49D]/90"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-[#2C2C2C] mb-4">¿Por qué elegir Café Aroma?</h2>
+            <p class="text-muted-[#2C2C2C] max-w-2xl mx-auto leading-relaxed">
+            Nos dedicamos a ofrecerte la mejor experiencia cafetera con productos de calidad premium y un servicio excepcional.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+            <div class="w-20 h-20 bg-[#6F4E37]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-[#6F4E37] text-3xl">☕</span>
+            </div>
+            <h3 class="text-[#2C2C2C] mb-3">Café Premium</h3>
+            <p class="text-[#717182]  leading-relaxed">
+                Granos seleccionados de las mejores fincas del mundo, tostados artesanalmente para garantizar el sabor perfecto en cada taza.
+            </p>
+            </div>
+
+            <div class="text-center">
+            <div class="w-20 h-20 bg-[#6F4E37]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-[#6F4E37] text-3xl">🥐</span>
+            </div>
+            <h3 class="text-[#2C2C2C]  mb-3">Productos Frescos</h3>
+            <p class="text-[#717182]  leading-relaxed">
+                Panadería y repostería horneada diariamente con ingredientes naturales y recetas tradicionales que han pasado de generación en generación.
+            </p>
+            </div>
+
+            <div class="text-center">
+            <div class="w-20 h-20 bg-[#6F4E37]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-[#6F4E37] text-3xl">🏠</span>
+            </div>
+            <h3 class="text-[#2C2C2C]  mb-3">Ambiente Acogedor</h3>
+            <p class="text-[#717182]  leading-relaxed">
+                Un espacio diseñado para que te sientas como en casa, perfecto para trabajar, estudiar o simplemente disfrutar de un momento de tranquilidad.
+            </p>
+            </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-[#DAB49D]/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-[#2C2C2C]  mb-4">¿Listo para vivir la experiencia?</h2>
+      <p class="text-[#717182]  mb-8 leading-relaxed">
+        Visítanos hoy y descubre por qué somos el café favorito de la ciudad. Tu mesa perfecta te está esperando.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <app-button-principal
+          title="Contáctanos"
+          (clickEvent)="goTo('/contact')"
+          class="bg-[#6F4E37] rounded-lg text-[#ffffff] hover:bg-[#6F4E37]/90"
+        />
+        <app-button-principal
+          title="Explorar Menú"
+          (clickEvent)="goTo('/catalog')"
+          class="border-[#6F4E37] rounded-lg border-solid border-[1px] text-[#6F4E37] hover:bg-[#6F4E37]/5"
+        />
+      </div>
+    </div>
+  </section>
+</div>

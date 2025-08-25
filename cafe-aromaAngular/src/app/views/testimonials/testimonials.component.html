@@ -1,0 +1,47 @@
+<main class="bg-background min-h-screen text-gray-900 flex flex-col">
+  <section class="flex-grow py-16 px-6 md:px-12 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-12 text-center text-gray-800">
+      Lo que dicen nuestros clientes
+    </h2>
+
+    <div *ngIf="loading$ | async" class="text-center mb-8">Cargando testimonios...</div>
+
+    <ng-container *ngIf="testimonios$ | async as testimonios">
+      <div *ngIf="testimonios.length; else noData" class="grid gap-12 md:grid-cols-3">
+        <ng-container *ngFor="let testimonio of testimonios">
+          <article
+            class="bg-white min-h-[301px] rounded-xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
+          >
+            <ng-container *ngIf="testimonio.photo; else noPhoto">
+              <img
+                [src]="testimonio.photo"
+                [alt]="'Foto de ' + testimonio.name"
+                class="w-24 h-24 rounded-full object-cover mb-6 border-4 border-primary"
+                loading="lazy"
+              />
+            </ng-container>
+            <ng-template #noPhoto>
+              <div
+                class="w-24 h-24 rounded-full bg-gray-300 mb-6 flex items-center justify-center text-xl text-gray-600 select-none"
+              >
+                ?
+              </div>
+            </ng-template>
+
+            <p class="mb-6 text-black italic text-lg">"{{ testimonio.comment }}"</p>
+            <p class="font-semibold text-xl text-gray-900">{{ testimonio.name }}</p>
+            <p *ngIf="testimonio.position" class="mt-1 text-sm text-primary font-medium">
+              {{ testimonio.position }}
+            </p>
+          </article>
+        </ng-container>
+
+        <app-add-testimony-card (onAdd)="handleAddTestimony($event)"></app-add-testimony-card>
+      </div>
+
+      <ng-template #noData>
+        <p class="text-center text-gray-500">No hay testimonios disponibles.</p>
+      </ng-template>
+    </ng-container>
+  </section>
+</main>

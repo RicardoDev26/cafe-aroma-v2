@@ -1,0 +1,86 @@
+<div class="min-h-screen bg-background py-8 md:py-12" *ngIf="promotions$ | async as promotions">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <h1 class="text-foreground mb-4 text-4xl md:text-5xl">Promociones Especiales</h1>
+      <p class="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        No te pierdas nuestras ofertas exclusivas y promociones especiales.
+      </p>
+    </div>
+
+    <div class="bg-gradient-to-r from-primary/10 to-accent/20 rounded-2xl p-8 mb-12">
+      <div class="text-center mb-8">
+        <h2 class="text-foreground mb-3">🔥 Promociones Destacadas</h2>
+        <p class="text-muted-foreground">Las ofertas más populares de la semana</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div *ngFor="let promo of promotions.slice(0,3)" class="relative">
+          <div class="absolute -top-3 -right-3 bg-destructive text-destructive-foreground px-3 py-1 rounded-full text-sm z-10">
+            {{ promo.discount }}
+          </div>
+          <app-promotions-card
+            [title]="promo.title"
+            [description]="promo.description"
+            [imageUrl]="promo.imageUrl">
+          </app-promotions-card>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="text-center mb-8">
+        <h2 class="text-foreground mb-3">Todas Nuestras Promociones</h2>
+        <p class="text-muted-foreground">Explora todas las ofertas disponibles</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div *ngFor="let promo of promotions" class="group relative overflow-hidden rounded-lg">
+          <app-promotions-card
+            [title]="promo.title"
+            [description]="promo.description"
+            [imageUrl]="promo.imageUrl">
+          </app-promotions-card>
+
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">{{ promo.validUntil }}</span>
+              <span class="bg-primary px-2 py-1 rounded text-xs">{{ promo.discount }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-16 bg-card rounded-2xl p-8 border border-border">
+      <h3 class="text-foreground mb-4">¿Listo para aprovechar estas ofertas?</h3>
+      <p class="text-muted-foreground mb-6 leading-relaxed">
+        Visítanos hoy mismo y no te pierdas estas promociones exclusivas.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button class="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 hover:cursor-pointer"
+              (click)="goTo('/catalog')">
+          Ver Catálogo Completo
+        </button>
+        <button class="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg hover:bg-secondary/90 hover:cursor-pointer"
+                (click)="goTo('/contact')">
+          Contáctanos
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <div class="bg-muted/30 rounded-lg p-6">
+        <h4 class="text-foreground mb-3">Términos y Condiciones</h4>
+        <div class="text-muted-foreground text-sm space-y-2 leading-relaxed">
+          <p>• Las promociones no son acumulables entre sí</p>
+          <p>• Válido únicamente en nuestras instalaciones</p>
+          <p>• Sujeto a disponibilidad de productos</p>
+          <p>• Café Aroma se reserva el derecho de modificar estas promociones</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

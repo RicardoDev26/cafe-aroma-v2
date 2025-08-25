@@ -1,0 +1,38 @@
+FROM php:8.2-apache
+
+# Instalar dependencias del sistema y extensiones PHP necesarias
+RUN apt-get update && apt-get install -y \
+    git unzip libpq-dev libicu-dev libzip-dev zip \
+    && docker-php-ext-install \
+        pdo \
+        pdo_pgsql \
+        intl \
+        opcache \
+        zip
+
+# Instalar Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Configuración de Apache para Symfony/API Platform
+RUN a2enmod rewrite
+
+# Cambiar DocumentRoot a public/
+RUN sed -i 's#/var/www/html#/var/www/html/public#g' /etc/apache2/sites-available/000-default.conf
+
+# Permitir overrides
+RUN echo "<Directory /var/www/html/public>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+</Directory>" > /etc/apache2/conf-available/symfony.conf \
+    && a2enconf symfony
+
+WORKDIR /var/www/html
+
+# Copiar el código
+COPY . .
+
+# Instalar dependencias PHP
+RUN composer install --no-scripts --no-interaction --prefer-dist --optimize-autoloader
+
+# Exponer el puerto de Apache
+EXPOSE 80

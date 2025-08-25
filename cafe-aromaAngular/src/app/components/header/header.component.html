@@ -1,0 +1,57 @@
+<nav class="bg-[#6F4E37] text-white sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0 cursor-pointer" (click)="handleNavigation('/')">
+          <h1 class="text-primary-foreground font-bold text-lg">Café Aromas</h1>
+        </div>
+  
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <button
+              *ngFor="let item of navigationItems"
+              (click)="handleNavigation(item.id)"
+              [ngClass]="{
+                'bg-[#DAB49D] text-black': isActive(item.id),
+                'hover:text-accent hover:cursor-pointer hover:bg-[#DAB49D]/10': !isActive(item.id)
+              }"
+              class="transition-colors px-3 py-2 rounded-md"
+            >
+              {{ item.label }}
+            </button>
+          </div>
+        </div>
+  
+        <div class="md:hidden">
+          <button (click)="toggleMenu()" class="hover:text-accent transition-colors">
+            <ng-container *ngIf="isMenuOpen; else menuIcon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </ng-container>
+            <ng-template #menuIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </ng-template>
+          </button>
+        </div>
+      </div>
+  
+      <div *ngIf="isMenuOpen" class="md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-white/20">
+          <button
+            *ngFor="let item of navigationItems"
+            (click)="handleNavigation(item.id)"
+            [ngClass]="{
+              'bg-[#DAB49D] text-black': isActive(item.id),
+              'hover:text-accent hover:bg-[#DAB49D]/10': !isActive(item.id)
+            }"
+            class="block w-full text-left px-3 py-2 transition-colors rounded-md"
+          >
+            {{ item.label }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
